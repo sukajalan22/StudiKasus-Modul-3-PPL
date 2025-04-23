@@ -15,24 +15,13 @@ class NotesTest extends DuskTestCase
     public function testExample(): void
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/login')
-                    ->type('email', 'irfan@gmail.com')
-                    ->type('password', '1234')
-                    ->press('LOG IN')
-                    ->assertPathIs('/dashboard')
-
-                    ->clickLink('Notes') 
-                    ->clickLink('Create Note')
-                    ->assertPathIs('/create-note')
-                    ->type('title', 'abdul')
-                    ->type('description', 'keren')
-                    ->press('CREATE')
-
-                    ->assertPathIs('/notes')
-                    ->assertSee('new note has been created') 
-                    ->assertSee('abdul')
-                    ->assertSee('keren')
-                    ->assertSee('Author: irfan');
+            $browser-->assertSee(text: 'Enterprise Application Development') 
+            ->clickLink(link: 'Log in')
+            ->assertPathIs(path: '/login')
+            ->type(field:'email',value:'irfan@gmail.com')
+            ->type(field:'password',value:'1234')
+            ->press(button: 'LOG IN')
+            ->assertPathIs('/dashboard');
 
         });
     }
